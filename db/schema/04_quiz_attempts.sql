@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS quiz_attempts CASCADE;
+
+CREATE TABLE quiz_attempts(
+  id SERIAL PRIMARY NOT NULL,
+  quiz_id INTEGER REFERENCES quizzes(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);

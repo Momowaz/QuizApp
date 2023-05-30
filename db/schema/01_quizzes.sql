@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS quizzes CASCADE;
+ CREATE TABLE quizzes(
+  id SERIAL PRIMARY KEY ,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  title VARHCAR(255) NOT NULL,
+  description TEXT,
+  is_private BOOLEAN NOT NULL DEFAULT FALSE
+ );
