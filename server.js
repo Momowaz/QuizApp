@@ -44,9 +44,42 @@ app.use('/users', usersRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+
+const quizData = [
+  {
+    question: 'Question 1',
+    options: ['Option 1', 'Option 2', 'Option 3', 'Option 4']
+  }
+];
+
+const quizIntro = [
+  {
+    question: 'Quiz 1',
+    options: ['User: Mohib']
+  },
+  {
+    question: 'Quiz 2',
+    options: ['User: Mitali']
+  },
+  {
+    question: 'Quiz 3',
+    options: ['User: Gurpreet']
+  },
+  // Add more box data as needed
+];
+
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('home', { quizList: quizIntro });
 });
+
+app.get('/index', (req, res) => {
+  res.render('index', { quizQs: quizData });
+});
+
+app.post('/index', (req, res) => {
+  res.render('index', { quizQs: quizData });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
