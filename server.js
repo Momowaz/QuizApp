@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require("cookie-session");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -25,6 +26,11 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieSession({
+  name: "session",
+  keys: ["key1"]
+}));
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -85,19 +91,34 @@ const myQuizes = [
   // Add more box data as needed
 ];
 
+
 app.get('/', (req, res) => {
-  // const userId = req.session.userId;
-  // const user = usersDatabase[userId] 
-  res.render('home', { quizList: quizIntro });
-  // if (user) {
-  // } else {
-  //   res.redirect("/login");
-  //   return;
-  // }
+  const templateVars = {
+    quizList: quizIntro,
+    user: req.session.userId
+  }
+  res.render('home', templateVars);
+
+  // --- Mohib code ---
+  // // const userId = req.session.userId;
+  // // const user = usersDatabase[userId]
+  // res.render('home', { quizList: quizIntro });
+  // // if (user) {
+  // // } else {
+  // //   res.redirect("/login");
+  // //   return;
+  // // }
 });
 
 app.get('/quiz', (req, res) => {
-  res.render('quiz', { quizQs: quizData });
+  const templateVars = {
+    quizQs: quizData,
+    user: req.session.userId
+  }
+  res.render('quiz', templateVars);
+
+  // --- Mohib code ---
+  // res.render('quiz', { quizQs: quizData });
 });
 
 app.post('/quiz', (req, res) => {
@@ -105,15 +126,34 @@ app.post('/quiz', (req, res) => {
 });
 
 app.get('/myquizes', (req, res) => {
-  res.render('myquizes', { myQuizesList: myQuizes });
+  const templateVars = {
+    myQuizesList: myQuizes,
+    user: req.session.userId
+  }
+  res.render('myquizes', templateVars);
+
+  // --- Mohib code ---
+  // res.render('myquizes', { myQuizesList: myQuizes });
 });
 
 app.get("/login", (req, res) => {
-    res.render("login");
+  const templateVars = {
+    user: req.session.userId
+  }
+  res.render('login', templateVars);
+
+  // --- Mohib code ---
+  // res.render("login");
 });
 
 app.get("/register", (req, res) => {
-  res.render("register");
+  const templateVars = {
+    user: req.session.userId
+  }
+  res.render('register', templateVars);
+
+  // --- Mohib code ---
+  // res.render("register");
 });
 
 
