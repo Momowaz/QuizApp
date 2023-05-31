@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="styles/play-quiz.css" type="text/css" />
+
+
+    <title>Play quiz</title>
+  </head>
+
+  <body>
+    <header class="pageHeader">
+      <div class="alignLeft">
+        <span class="appName">QuizBeez</span>
+        <span class="userLink">Home</span>
+        <span class="userLink">Create Quiz</span>
+        <span class="userLink">View My Attempts</span>
+        <span class="userLink">My Quizzes</span>
+      </div>
+      <div class="alignRight">
+        <span class="userLink">Login</span>
+        <span class="userLink">Sign Up</span>
+      </div>
+    </header>
+
+    <main class="container">
+    <article class="questionContainer">
+    <div class="container mt-5">
+      <div class="d-flex justify-content-center row">
+          <div class="col-md-10 col-lg-10">
+              <div class="border">
+                  <div class="question bg-white p-3 border-bottom">
+                      <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                          <h4 class="title">Quiz Title</h4>
+                      </div>
+                  </div>
+                  <div class="question bg-white p-3 border-bottom">
+                      <div class="d-flex flex-row align-items-center question-title">
+                          <h3 class="text-danger title">Q.</h3>
+                          <b><h4 class="mt-1 ml-2">Quiz question goes here</h4></b>
+                      </div>
+                      <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="brazil" value="brazil"> <span>option 1</span>
+                        </label>
+                      </div>
+                      <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="Germany" value="Germany"> <span>option2</span>
+                        </label>
+                      </div>
+                      <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="Indonesia" value="Indonesia"> <span>option3</span>
+                        </label>
+                      </div>
+                      <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="Russia" value="Russia"> <span>option4</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white"><button class="btn btn-primary border-success align-items-center btn-success" type="button">Next<i class="fa fa-angle-right ml-2"></i></button></div>
+                </div>
+          </div>
+      </div>
+    </div>
+    </article>
+  </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>
