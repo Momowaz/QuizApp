@@ -122,7 +122,13 @@ app.get('/quiz', (req, res) => {
 });
 
 app.post('/quiz', (req, res) => {
-  res.render('quiz', { quizQs: quizData });
+  const templateVars = {
+    quizQs: quizData,
+    user: req.session.userId
+  }
+  res.render('quiz', templateVars);
+
+  // res.render('quiz', { quizQs: quizData });
 });
 
 app.get('/myquizes', (req, res) => {
