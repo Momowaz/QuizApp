@@ -1,0 +1,53 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer button {
+    padding: 10px 20px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-family: "Source Sans Pro" !important;
+  }
+
+  .footer button.btn-primary {
+    background-color: rgb(0, 145, 255);
+  }
+
+  .footer .cancelBtn {
+    background-color: rgba(148, 7, 7, 0.678);
+  }
+  .footer .submitBtn {
+    background-color: rgba(19, 148, 7, 0.966);
+  }
+
+.questionBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+ .questionBox textarea {
+    
+    border-radius: 10px;
+    border: 1px solid #444;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+.questionBox input {
+    
+    border-radius: 10px;
+    border: 1px solid #444;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+
+.questionBox .cancelBtn {
+align-items: center;
+}
+  
