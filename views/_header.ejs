@@ -64,7 +64,7 @@
         <!-- Replace "UserName" with the actual user name -->
         <% if (user) { %>
           <form class="form-inline" method="POST" action="/users/logout">
-            <span>Logged in as: <%= user %></span>
+            <span><%= user %></span>
             <button type="submit" class="btn btn-primary">Logout</button>
           </form>
         <% } else { %>

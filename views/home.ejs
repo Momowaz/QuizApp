@@ -34,15 +34,15 @@
         </div>
       </div>
       <div class="optionBox">
-        <% qList.user.forEach(function(option) { %>
-          <span><%= option %></span>
-        <% }) %>
+
+          <span><%= qList.description %></span>
+
       </div>
       <div class="footer">
         <!-- <button>Show Result</button> -->
         <form method="POST" action="/quiz">
           <button type="submit">Start</button>
-        </form>        
+        </form>
       </div>
     </div>
   <% }) %>
