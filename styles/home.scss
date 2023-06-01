@@ -21,12 +21,6 @@
       rgba(163, 208, 219, 1) 100%
     );
 }
-header {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
 
 html {
     box-sizing: border-box;
@@ -44,8 +38,9 @@ html {
     font-size: 24px;
     font-family: 'Source Sans Pro';
     justify-content: center;
-    align-items: center;
+    align-items: start;
     min-height: 100vh;
+    padding-top: 50px;
 }
 
 .box {

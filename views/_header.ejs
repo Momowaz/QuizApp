@@ -11,6 +11,9 @@
   font-weight: bold;
 }
 
+.nav-link {
+  color: #0062cc !important;
+}
 .navbar-nav .nav-item {
   margin-right: 10px;
 }
@@ -45,8 +48,8 @@
 
 </style>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-success">
-      <a class="navbar-brand" href="/urls">Quiz App</a>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -54,23 +57,28 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="/">Home</a>
+          <a class="nav-item nav-link" href="/create-quiz">Create Quiz</a>
           <a class="nav-item nav-link" href="/quiz-attempts">Quiz Attempts</a>
           <a class="nav-item nav-link" href="/my-quizzes">My Quizzes</a>
         </div>
       </div>
+
       <div class="navbar-text text-white mr-2">
+       
         <!-- Add logic here to conditionally display the user name when logged in -->
         <!-- Replace "UserName" with the actual user name -->
-        Hello, UserName
+       
       </div>
-      <form class="form-inline" action="/logout" method="POST">
+      <!-- <form class="form-inline" action="/logout" method="POST">
         <button type="submit" class="btn btn-primary">Logout</button>
-      </form>
+      </form> -->
+      
       <div class="navbar-text text-white mr-2">
         Please Login | Register
       </div>
       <a class="nav-item nav-link btn btn-primary" href="/login">Login</a> &nbsp
       <a class="nav-item nav-link btn btn-warning" href="/register">Register</a>
+      
     </nav>
   </header>
   

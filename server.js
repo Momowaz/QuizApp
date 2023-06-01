@@ -31,6 +31,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
+const usersDatabase = require("./db/localDB.js");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -68,8 +69,16 @@ const quizIntro = [
   // Add more box data as needed
 ];
 
+
 app.get('/', (req, res) => {
+  // const userId = req.session.userId;
+  // const user = usersDatabase[userId] 
   res.render('home', { quizList: quizIntro });
+  // if (user) {
+  // } else {
+  //   res.redirect("/login");
+  //   return;
+  // }
 });
 
 app.get('/quiz', (req, res) => {
@@ -78,6 +87,14 @@ app.get('/quiz', (req, res) => {
 
 app.post('/quiz', (req, res) => {
   res.render('quiz', { quizQs: quizData });
+});
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+app.get("/register", (req, res) => {
+  res.render("register");
 });
 
 

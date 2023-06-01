@@ -27,7 +27,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  // min-height: 100vh;
 }
 
 .box {
@@ -51,6 +51,7 @@ body {
 }
 
 .header {
+  padding-top: 50px;
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
@@ -118,4 +119,14 @@ body {
   cursor: pointer;
   z-index: 99;
   background-color: #ff0000;
+}
+
+@media (max-width: 768px) {
+  /* Apply styles for screens up to 768px wide */
+  .optionBox {
+      grid-template-columns: 1fr;
+  } 
+  .box {
+    width: 425px;
+  }
 }
