@@ -31,6 +31,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
+const usersDatabase = require("./db/localDB.js");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -44,9 +45,77 @@ app.use('/users', usersRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+
+const quizData = [
+  {
+    question: 'Question 1',
+    options: ['Option 1', 'Option 2', 'Option 3', 'Option 4']
+  }
+];
+
+const quizIntro = [
+  {
+    question: 'Quiz 1',
+    options: ['User: Mohib']
+  },
+  {
+    question: 'Quiz 2',
+    options: ['User: Mitali']
+  },
+  {
+    question: 'Quiz 3',
+    options: ['User: Gurpreet']
+  },
+  // Add more box data as needed
+];
+
+const myQuizes = [
+  {
+    question: 'Quiz 1',
+    options: ['User: Mohib']
+  },
+  {
+    question: 'Quiz 2',
+    options: ['User: Mohib']
+  },
+  {
+    question: 'Quiz 3',
+    options: ['User: Mohib']
+  },
+  // Add more box data as needed
+];
+
 app.get('/', (req, res) => {
-  res.render('index');
+  // const userId = req.session.userId;
+  // const user = usersDatabase[userId] 
+  res.render('home', { quizList: quizIntro });
+  // if (user) {
+  // } else {
+  //   res.redirect("/login");
+  //   return;
+  // }
 });
+
+app.get('/quiz', (req, res) => {
+  res.render('quiz', { quizQs: quizData });
+});
+
+app.post('/quiz', (req, res) => {
+  res.render('quiz', { quizQs: quizData });
+});
+
+app.get('/myquizes', (req, res) => {
+  res.render('myquizes', { myQuizesList: myQuizes });
+});
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -1,0 +1,80 @@
+<style>
+    /* Add your CSS styles here */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #0062cc !important;
+}
+.navbar-nav .nav-item {
+  margin-right: 10px;
+}
+
+.navbar-text {
+  margin-right: 10px;
+}
+
+.form-inline .btn {
+  margin-left: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+
+</style>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/">Home</a>
+          <a class="nav-item nav-link" href="/create-quiz">Create Quiz</a>
+          <a class="nav-item nav-link" href="/quiz-attempts">Quiz Attempts</a>
+          <a class="nav-item nav-link" href="/myquizes">My Quizzes</a>
+        </div>
+      </div>
+
+      <div class="navbar-text text-white mr-2">
+       
+        <!-- Add logic here to conditionally display the user name when logged in -->
+        <!-- Replace "UserName" with the actual user name -->
+       
+      </div>
+      <!-- <form class="form-inline" action="/logout" method="POST">
+        <button type="submit" class="btn btn-primary">Logout</button>
+      </form> -->
+      
+      <div class="navbar-text text-white mr-2">
+        Please Login | Register
+      </div>
+      <a class="nav-item nav-link btn btn-primary" href="/login">Login</a> &nbsp
+      <a class="nav-item nav-link btn btn-warning" href="/register">Register</a>
+      
+    </nav>
+  </header>
+  
