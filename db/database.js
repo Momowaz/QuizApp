@@ -21,7 +21,7 @@ const getAllQuizzes = function () {
     .query(`
     SELECT * FROM quizzes
     WHERE is_private = FALSE
-    ORDER BY id DESC;
+    ORDER BY id;
     `)
     .then((result) => {
       return result.rows;
@@ -49,17 +49,55 @@ const addUser = function (user) {
 
 // Get my quizes
 const getMyQuizes = function(userID) {
-  // const userid = `SELECT id FROM users WHERE name = '${userID}'`;
-  // console.log("my quiz list userid: ", userid);
   return db
     .query(`
     SELECT *
     FROM quizzes
-    WHERE id = $1;
-    `, [userid])
+    WHERE user_id =
+    (SELECT id FROM users WHERE name = $1);
+    `, [userID])
     .then((result) => {
       console.log("result: ", result);
-      return result.rows[0];
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err);
+      console.error('query error', err.stack);
+    })
+}
+
+// Get quiz questions
+const getQuiz = function(qid) {
+  return db
+    .query(`
+    SELECT questions.*, answers.*
+    FROM questions
+    JOIN answers ON questions.id = answers.question_id
+    WHERE questions.quiz_id = $1
+    GROUP BY questions.id, answers.id;
+    `, [qid])
+    .then((result) => {
+      console.log("result: ", result);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err);
+      console.error('query error', err.stack);
+    })
+}
+
+const getAnswers = function(qid) {
+  return db
+    .query(`
+    SELECT answers.*
+    FROM questions
+    JOIN answers ON questions.id = answers.question_id
+    WHERE questions.quiz_id = $1
+    GROUP BY questions.id, answers.id;
+    `, [qid])
+    .then((result) => {
+      console.log("result: ", result);
+      return result.rows;
     })
     .catch((err) => {
       console.log(err);
@@ -73,5 +111,7 @@ module.exports = {
   getUserWithEmail,
   getAllQuizzes,
   addUser,
-  getMyQuizes
+  getMyQuizes,
+  getQuiz,
+  getAnswers
 };

@@ -25,13 +25,13 @@
 </header>
 <body class="quiz-body">
 
-  
+
   <div class="header">
     <div class="scoreBox">Score: 0</div>
     <div class="numOfQs">Questions: 0</div>
   </div>
 
-  <% quizQs.forEach(function(mcqs) { %>
+  <% quizQs.forEach(function(mcqs, i, arr) { %>
     <div class="box">
       <div class="title">
         <div class="questionBox">
@@ -39,15 +39,15 @@
         </div>
       </div>
       <div class="optionBox">
-        <% mcqs.options.forEach(function(option) { %>
-          <span><%= option %></span>
+        <% arr.forEach(function(option) { %>
+          <span><%= option.answer %></span>
         <% }) %>
       </div>
       <div class="footer">
-        
+
         <button type="submit">Result</button>
           <button type="submit">Next</button>
-        
+
       </div>
     </div>
   <% }) %>

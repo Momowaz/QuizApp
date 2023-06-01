@@ -101,6 +101,27 @@ const myQuizes = [
 ];
 
 
+app.get('/quiz/:id', (req, res) => {
+  const quizID = req.params.id
+  console.log("quizID in server ", quizID);
+
+  database
+    .getQuiz(quizID)
+    .then((quiz) => {
+      const templateVars = {
+        quizQs: quiz,
+        user: req.session.userId
+      }
+      console.log("quiz promise:", quiz);
+      res.render('quiz', templateVars);
+    })
+    .catch((e) => {
+      console.log(e);
+      console.error(e);
+      res.send(e);
+    });
+});
+
 app.get('/', (req, res) => {
   database
     .getAllQuizzes()
@@ -125,16 +146,30 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/quiz', (req, res) => {
-  const templateVars = {
-    quizQs: quizData,
-    user: req.session.userId
-  }
-  res.render('quiz', templateVars);
+// app.get('/quiz', (req, res) => {
+//   database
+//     .getQuiz()
+//     .then((quiz) => {
+//       const templateVars = {
+//         quizQs: quiz,
+//         user: req.session.userId
+//       }
+//       res.render('quiz', templateVars);
+//     })
+//     .catch((e) => {
+//       console.error(e);
+//       res.send(e);
+//     });
 
-  // --- Mohib code ---
-  // res.render('quiz', { quizQs: quizData });
-});
+
+  // const templateVars = {
+  //   quizQs: quizData,
+  //   user: req.session.userId
+  // }
+  // res.render('quiz', templateVars);
+// });
+
+
 
 app.post('/quiz', (req, res) => {
   const templateVars = {
