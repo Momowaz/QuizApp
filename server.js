@@ -72,12 +72,12 @@ app.get('/', (req, res) => {
   res.render('home', { quizList: quizIntro });
 });
 
-app.get('/index', (req, res) => {
-  res.render('index', { quizQs: quizData });
+app.get('/quiz', (req, res) => {
+  res.render('quiz', { quizQs: quizData });
 });
 
-app.post('/index', (req, res) => {
-  res.render('index', { quizQs: quizData });
+app.post('/quiz', (req, res) => {
+  res.render('quiz', { quizQs: quizData });
 });
 
 
