@@ -6,6 +6,7 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require("cookie-session");
+const database = require('./db/database.js');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -101,21 +102,27 @@ const myQuizes = [
 
 
 app.get('/', (req, res) => {
-  const templateVars = {
-    quizList: quizIntro,
-    user: req.session.userId
-  }
-  res.render('home', templateVars);
+  database
+    .getAllQuizzes()
+    .then((quizzes) => {
+      const templateVars = {
+          quizList: quizzes,
+          user: req.session.userId
+        }
+      res.render('home', templateVars);
+    })
+    .catch((e) => {
+      console.error(e);
+      res.send(e);
+    });
 
-  // --- Mohib code ---
-  // // const userId = req.session.userId;
-  // // const user = usersDatabase[userId]
-  // res.render('home', { quizList: quizIntro });
-  // // if (user) {
-  // // } else {
-  // //   res.redirect("/login");
-  // //   return;
-  // // }
+  // // previous code
+  // const templateVars = {
+  //   quizList: quizIntro,
+  //   user: req.session.userId
+  // }
+  // res.render('home', templateVars);
+
 });
 
 app.get('/quiz', (req, res) => {
@@ -138,14 +145,27 @@ app.post('/quiz', (req, res) => {
 });
 
 app.get('/myquizes', (req, res) => {
-  const templateVars = {
-    myQuizesList: myQuizes,
-    user: req.session.userId
-  }
-  res.render('myquizes', templateVars);
+  database
+    .getMyQuizes(req.session.userId)
+    .then((quizzes) => {
+      const templateVars = {
+          myQuizesList: quizzes,
+          user: req.session.userId
+        }
+      res.render('myquizes', templateVars);
+    })
+    .catch((e) => {
+      console.error(e);
+      res.send(e);
+    });
 
-  // --- Mohib code ---
-  // res.render('myquizes', { myQuizesList: myQuizes });
+
+  // previous code
+  // const templateVars = {
+  //   myQuizesList: myQuizes,
+  //   user: req.session.userId
+  // }
+  // res.render('myquizes', templateVars);
 });
 
 app.get("/login", (req, res) => {
