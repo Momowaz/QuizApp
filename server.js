@@ -69,6 +69,21 @@ const quizIntro = [
   // Add more box data as needed
 ];
 
+const myQuizes = [
+  {
+    question: 'Quiz 1',
+    options: ['User: Mohib']
+  },
+  {
+    question: 'Quiz 2',
+    options: ['User: Mohib']
+  },
+  {
+    question: 'Quiz 3',
+    options: ['User: Mohib']
+  },
+  // Add more box data as needed
+];
 
 app.get('/', (req, res) => {
   // const userId = req.session.userId;
@@ -87,6 +102,10 @@ app.get('/quiz', (req, res) => {
 
 app.post('/quiz', (req, res) => {
   res.render('quiz', { quizQs: quizData });
+});
+
+app.get('/myquizes', (req, res) => {
+  res.render('myquizes', { myQuizesList: myQuizes });
 });
 
 app.get("/login", (req, res) => {
