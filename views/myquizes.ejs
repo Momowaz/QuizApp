@@ -30,11 +30,11 @@
     <div class="box">
       <div class="title">
         <div class="questionBox">
-          <%= mqList.question %>
+          <%= mqList.title %>
         </div>
       </div>
       <div class="optionBox">
-        <% mqList.options.forEach(function(option) { %>
+        <% mqList.user.forEach(function(option) { %>
           <span><%= option %></span>
         <% }) %>
       </div>
