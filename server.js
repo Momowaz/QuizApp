@@ -55,32 +55,40 @@ const quizData = [
 
 const quizIntro = [
   {
-    question: 'Quiz 1',
-    options: ['User: Mohib']
+    title: 'Quiz 1',
+    user: ['User: Mohib']
   },
   {
-    question: 'Quiz 2',
-    options: ['User: Mitali']
+    title: 'Quiz 2',
+    user: ['User: Mitali']
   },
   {
-    question: 'Quiz 3',
-    options: ['User: Gurpreet']
+    title: 'Quiz 3',
+    user: ['User: Gurpreet']
   },
+  {
+    title: 'Quiz 4',
+    user: ['User: David']
+  },
+  {
+    title: 'Quiz 5',
+    user: ['User: Lucy']
+  }
   // Add more box data as needed
 ];
 
 const myQuizes = [
   {
-    question: 'Quiz 1',
-    options: ['User: Mohib']
+    title: 'Quiz 1',
+    user: ['User: Mohib']
   },
   {
-    question: 'Quiz 2',
-    options: ['User: Mohib']
+    title: 'Quiz 2',
+    user: ['User: Mohib']
   },
   {
-    question: 'Quiz 3',
-    options: ['User: Mohib']
+    title: 'Quiz 3',
+    user: ['User: Mohib']
   },
   // Add more box data as needed
 ];
@@ -116,6 +124,9 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+app.get("/createQuiz", (req, res) => {
+  res.render("createQuiz");
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
