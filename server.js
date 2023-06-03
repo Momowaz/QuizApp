@@ -203,6 +203,24 @@ app.get('/myquizes', (req, res) => {
   // res.render('myquizes', templateVars);
 });
 
+const getMyQuizes = function(userID) {
+  return db
+    .query(`
+    SELECT *
+    FROM quizzes
+    WHERE user_id =
+    (SELECT id FROM users WHERE name = $1`
+    , [userID])
+    .then((result) => {
+      console.log("result: ", result);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err);
+      console.error('query error', err.stack);
+    })
+}
+
 app.get("/login", (req, res) => {
   const templateVars = {
     user: req.session.userId
@@ -229,6 +247,32 @@ app.get("/createQuiz", (req, res) => {
   }
   res.render("createQuiz", templateVars);
 });
+
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+
+// Endpoint to handle the quiz data submission
+app.post('/createQuiz', (req, res) => {
+  const { id, question, options, answer } = req.body;
+
+  // Insert quiz data into the PostgreSQL database
+  const questionQuery = 'INSERT INTO questions (quiz_id, question) VALUES ($1, $2)';
+  const questionValues = [id, question];
+
+  const optionQuery = 'INSERT INTO answers (question_id, answers, its_right) VALUES ($1, $2, $3)';
+  const optionValues = [id, options, ];
+
+  pool.query(questionQuery, questionValues, optionQuery,  optionValues, (err, result) => {
+    if (err) {
+      console.error('Error executing query', err);
+      res.status(500).json({ error: 'An error occurred' });
+    } else {
+      console.log('Quiz data inserted successfully');
+      res.status(200).json({ message: 'Quiz data inserted successfully' });
+    }
+  });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

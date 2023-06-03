@@ -72,13 +72,16 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+        
     <script>
-        var questionCount = 0;
+        let questionCount = 0;
 
         function nextQuestion() {
-            var questionInput = document.getElementById("question").value;
-            var option1Input = document.getElementById("option1").value;
-            var option2Input = document.getElementById("option2").value;
+            let questionInput = document.getElementById("question").value;
+            let option1Input = document.getElementById("option1").value;
+            let option2Input = document.getElementById("option2").value;
+            let option3Input = document.getElementById("option3").value;
+            let option4Input = document.getElementById("option4").value;
 
             if (questionInput === "" || option1Input === "" || option2Input === "") {
                 
@@ -97,7 +100,7 @@
         function showSuccessMessage() {
 
             if (questionCount > 0) {
-            var questionBox = document.querySelector(".questionBox");
+            let questionBox = document.querySelector(".questionBox");
             document.getElementById("questionCounter").innerHTML = "Your quiz has been created.";
 
             setTimeout(function () {
@@ -108,6 +111,47 @@
             document.getElementById("questionCounter").innerHTML = "Please add one or more questions to submit quiz.";
         }
     }
+
+    $(document).ready(function() {
+  // Handle form submission
+  $('#quiz-form').submit(function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Extract form data
+    const id = $('#question-id').val();
+    const question = $('#question').val();
+    const option1 = $('#option1').val();
+    const option2 = $('#option2').val();
+    const option3 = $('#option3').val();
+    const option4 = $('#option4').val();
+    const answer = $('#answer').val();
+
+    // Create data object to send to the server
+    const data = {
+      id: id,
+      question: question,
+      options: [option1, option2, option3, option4],
+      answer: answer
+    };
+
+    // Send data to the server using AJAX
+    $.ajax({
+      url: '/createQuiz',
+      method: 'POST',
+      data: data,
+      success: function(response) {
+        // Handle success response from the server
+        console.log(response);
+      },
+      error: function(error) {
+        // Handle error response from the server
+        console.error(error);
+      }
+    });
+  });
+});
+
+
 
     </script>
 </body>

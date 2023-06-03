@@ -14,6 +14,21 @@ const getUserWithEmail = function (email) {
       console.error('query error', err.stack);
     });
 };
+// Add a new user to the database.
+const addUser = function (user) {
+  return db
+    .query(`
+      INSERT INTO users (name, email, password)
+      VALUES ($1, $2, $3)
+      RETURNING *;
+    `, [user.name, user.email, user.password])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.error('query error', err.stack);
+    })
+};
 
 // Get all quizzes
 const getAllQuizzes = function () {
@@ -31,21 +46,7 @@ const getAllQuizzes = function () {
     });
 }
 
-// Add a new user to the database.
-const addUser = function (user) {
-  return db
-    .query(`
-      INSERT INTO users (name, email, password)
-      VALUES ($1, $2, $3)
-      RETURNING *;
-    `, [user.name, user.email, user.password])
-    .then((result) => {
-      return result.rows[0];
-    })
-    .catch((err) => {
-      console.error('query error', err.stack);
-    })
-};
+
 
 // Get my quizes
 const getMyQuizes = function(userID) {
